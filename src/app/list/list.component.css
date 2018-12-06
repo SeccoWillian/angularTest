@@ -1,0 +1,16 @@
+.card-dark{
+    background-color: rgb(103, 103, 103);
+}
+
+.card-title-white{
+    color: white;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}

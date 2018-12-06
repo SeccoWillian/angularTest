@@ -1,0 +1,124 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-dark">
+                        <h4 class="card-title-white">List years with multiple winners</h4>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>Year</th>
+                                <th>Win count</th>
+                            </thead>
+                            <tr *ngFor="let mult of multWin">
+                                <td> {{mult.year}} </td>
+                                <td> {{mult.winnerCount}} </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-dark">
+                        <h4 class="card-title-white">Top 3 studios with winners</h4>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>Name</th>
+                                <th>Win count</th>
+                            </thead>
+                            <tr *ngFor="let top of topTree; let i=index">
+                                <td *ngIf="i<3"> {{top.name}} </td>
+                                <td *ngIf="i<3"> {{top.winCount}} </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-dark">
+                        <h4 class="card-title-white">Producer with longest and shortest interval between wins</h4>
+                        <p class="card-category">MAXIMUM</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>Producer</th>
+                                <th>Interval</th>
+                                <th>Previous Year</th>
+                                <th>Following Years</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor='let max of maximum'>
+                                    <td> {{max.producer}} </td>
+                                    <td> {{max.interval}} </td>
+                                    <td> {{max.previousWin}} </td>
+                                    <td> {{max.followingWin}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-header card-dark">
+                        <p class="card-category">MINIMUM</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>Producer</th>
+                                <th>Interval</th>
+                                <th>Previous Year</th>
+                                <th>Following Years</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor='let min of minimum'>
+                                    <td> {{min.producer}} </td>
+                                    <td> {{min.interval}} </td>
+                                    <td> {{min.previousWin}} </td>
+                                    <td> {{min.followingWin}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-dark">
+                        <h4 class="card-title-white">List movie winners by years</h4>
+                    </div>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                            <input type="text" (keyup)="search($event.target.value)" matInput placeholder="Tipe the Year">
+                            <mat-icon matSuffix>search</mat-icon>
+                        </mat-form-field>
+                    </form>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>ID</th>
+                                <th>Year</th>
+                                <th>Title</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor='let winner of winYear'>
+                                    <td> {{winner.id}} </td>
+                                    <td> {{winner.year}} </td>
+                                    <td> {{winner.title}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

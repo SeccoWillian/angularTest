@@ -1,0 +1,61 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-dark">
+                        <h4 class="card-title-white">List Movies</h4>
+                        <p class="card-category"> List of all movies available</p>
+                    </div>
+
+                    <div class="mat-elevation-z8">
+                        <table mat-table [dataSource]="dataSource">
+
+                            <!-- id Column -->
+                            <ng-container matColumnDef="id">
+                                <th mat-header-cell *matHeaderCellDef> ID </th>
+                                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                            </ng-container>
+
+                            <!-- year Column -->
+                            <ng-container matColumnDef="year">
+                                <th mat-header-cell *matHeaderCellDef> Year
+                                    <mat-form-field>
+                                        <!-- <input matInput (keyup)="applyFilterYear($event.target.value)" placeholder="Filter by Year"> -->
+                                        <input matInput (keyup)="getYear($event.target.value)" placeholder="Filter by Year">
+                                    </mat-form-field>
+                                </th>
+                                <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+                            </ng-container>
+
+                            <!-- title Column -->
+                            <ng-container matColumnDef="title">
+                                <th mat-header-cell *matHeaderCellDef> Title </th>
+                                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                            </ng-container>
+
+                            <!-- Winner Column -->
+                            <ng-container matColumnDef="winner">
+                                <th mat-header-cell *matHeaderCellDef> Winner?
+                                    <mat-form-field>
+                                        <select matNativeControl (change)="getWinner($event.target.value)">
+                                            <option value="">Yes/No</option>
+                                            <option value="true">YES</option>
+                                            <option value="false">NO</option>
+                                        </select>
+                                    </mat-form-field>
+                                </th>
+                                <td mat-cell *matCellDef="let element"> {{element.winner == true ? 'YES' : 'NO'}} </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+
+                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
