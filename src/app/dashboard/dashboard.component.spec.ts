@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
+import { isArray } from 'util';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -19,7 +20,13 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should return data array', () => {
     expect(component).toBeTruthy();
+    expect(component.maximum).toBe(isArray);
+    expect(component.minimum).toBe(isArray);
+    expect(component.multWin).toBe(isArray);
+    expect(component.search).toBe(isArray);
+    expect(component.topTree).toBe(isArray);
+    expect(component.winYear).toBe(isArray);
   });
 });

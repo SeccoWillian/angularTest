@@ -14,6 +14,7 @@ export class ListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'year', 'title', 'winner'];
   dataSource;
   year: string = ''; winner: string = '';
+  totalElements: number = null;
 
   constructor(private apiService: apiService) { }
 
@@ -22,7 +23,8 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.getSize()
       .subscribe(data => {
-        this.apiService.getData(data)
+        this.totalElements = data;
+        this.apiService.getData(this.totalElements)
           .subscribe(data => {
             this.dataSource = new MatTableDataSource<PeriodicElement>(data);
             this.dataSource.paginator = this.paginator;
